@@ -73,7 +73,7 @@ class TasksController extends Controller
     {
         $task = Task::find($id);
         
-        if(\Auth::id === $task->user_id) {
+        if(\Auth::id() === $task->user_id) {
             return view('tasks.show', ['task' => $task,]);
         }
         
@@ -90,7 +90,7 @@ class TasksController extends Controller
     {
         $task = Task::find($id);
         
-        if(\Auth::id === $task->user_id) {
+        if(\Auth::id() === $task->user_id) {
             return view('tasks.edit', ['task' => $task,]);
         }
         
@@ -113,7 +113,7 @@ class TasksController extends Controller
         $task->content = $request->content;
         $task->save();
         
-        if(\Auth::id === $task->user_id) {
+        if(\Auth::id() === $task->user_id) {
             $task->update();
         }
         
@@ -130,7 +130,7 @@ class TasksController extends Controller
     {
         $task = \App\Task::find($id);
         
-        if(\Auth::id === $task->user_id) {
+        if(\Auth::id()=== $task->user_id) {
             $task->delete();
         }
         
